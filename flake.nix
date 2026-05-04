@@ -8,23 +8,23 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, system-config, home-manager, ... }:
+  outputs = { self, nixpkgs, system-config, home-manager, nix-darwin, ... }:
   let
-    system = "x86_64-linux";
-    specialArgs = {
-      isWorkMachine = false;
-      isArtMachine  = true;
-    };
+    linuxSystem = "x86_64-linux";
+    macSystem   = "aarch64-darwin";
   in {
     nixosConfigurations = {
       msi = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = linuxSystem;
         modules = [
           system-config.nixosModules.system
           ./hosts/msi/default.nix
-          # ./modules/system/base.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -32,6 +32,22 @@
             home-manager.extraSpecialArgs = {
               isWorkMachine = false;
               isArtMachine  = true;
+            };
+            home-manager.users.nikolefox = import ./home/nikolefox.nix;
+          }
+        ];
+      };
+      darwinConfigurations.macos = nix-darwin.lib.darwinSystem {
+        system = macSystem;
+        modules = [
+          ./hosts/macos/default.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              isWorkMachine = true;
+              isArtMachine  = false;
             };
             home-manager.users.nikolefox = import ./home/nikolefox.nix;
           }
