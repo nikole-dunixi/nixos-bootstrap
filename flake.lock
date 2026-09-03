@@ -66,8 +66,8 @@
     },
     "system-config": {
       "locked": {
-        "lastModified": 1786433440,
-        "narHash": "sha256-9XVD86oKl7aNHcBQbl3cgR6kmExVbXbKlE1WRuOjQt0=",
+        "lastModified": 1788416518,
+        "narHash": "sha256-XA4S3DP17kNjS5aQSc3tnfH5X+EDPfisucJiIiQe0H8=",
         "path": "/etc/nixos",
         "type": "path"
       },
