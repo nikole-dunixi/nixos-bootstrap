@@ -1,6 +1,17 @@
 # modules/home/base.nix
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    audacity
+    brave
+    kdePackages.kdenlive
+    moonlight-qt
+    telegram-desktop
+    tree
+    vscode
+    yt-dlp
+  ];
+
   # direnv
   programs.direnv = {
     enable = true;

@@ -18,4 +18,23 @@
       { from = 8000; to = 8010; }
     ];
   };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # SSH — disable password auth
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+  };
+
+  # Audio — use pipewire instead of pulseaudio
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 }

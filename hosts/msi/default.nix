@@ -7,6 +7,18 @@
 
   # networking.hostName = "msi";
 
+  # Static IP on the LAN-facing interface
+  networking.interfaces.enp48s0 = {
+    useDHCP = false;
+    ipv4.addresses = [{
+      address = "192.168.123.1";
+      prefixLength = 24;
+    }];
+  };
+
+  # Docker
+  virtualisation.docker.enable = true;
+
   # NVIDIA hybrid graphics (Intel + NVIDIA prime)
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   hardware.nvidia = {
