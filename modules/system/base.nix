@@ -25,7 +25,9 @@
   # SSH — disable password auth
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
+    settings = {
+      PasswordAuthentication = false;
+    };
   };
 
   # Audio — use pipewire instead of pulseaudio

@@ -31,22 +31,22 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*" = {
-        serverAliveInterval = 60;
-        serverAliveCountMax = 3;
-        identityFile = "~/.ssh/id_ed25519";
+        ServerAliveInterval = 60;
+        ServerAliveCountMax = 3;
+        IdentityFile = "~/.ssh/id_ed25519";
       };
       "github.com" = {
-        user = "nikole-dunixi";
+        User = "nikole-dunixi";
       };
       "msi" = {
-        user = "nikodunixi";
-        hostname = "192.168.123.1";
+        User = "nikodunixi";
+        HostName = "192.168.123.1";
       };
       "macos" = {
-        user = "nikodunixi";
-        hostname = "192.168.123.2";
+        User = "nikodunixi";
+        HostName = "192.168.123.2";
       };
     };
   };
