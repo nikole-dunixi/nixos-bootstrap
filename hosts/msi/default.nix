@@ -1,4 +1,4 @@
-# hosts/laptop/default.nix
+# hosts/msi/default.nix
 { config, pkgs, ... }:
 {
   imports = [
