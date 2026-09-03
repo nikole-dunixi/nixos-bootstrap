@@ -31,6 +31,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               isWorkMachine = false;
+              isDevMachine  = true;
               isArtMachine  = true;
             };
             home-manager.users.nikolefox = import ./home/nikolefox.nix;
