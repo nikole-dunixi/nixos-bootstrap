@@ -12,6 +12,17 @@
     yt-dlp
   ];
 
+  # bash — export the sops-decrypted Ollama token for local LLM clients
+  # (e.g. opencode). Only set on hosts where the secret has been decrypted;
+  # the guard keeps this safe on hosts without the secret file.
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''
+      if [ -f /run/secrets/ollama-token ]; then
+        export OLLAMA_API_KEY="$(cat /run/secrets/ollama-token)"
+      fi
+    '';
+  };
   # direnv
   programs.direnv = {
     enable = true;

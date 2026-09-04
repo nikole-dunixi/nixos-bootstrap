@@ -12,9 +12,13 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, system-config, home-manager, nix-darwin, ... }:
+  outputs = { self, nixpkgs, system-config, home-manager, nix-darwin, sops-nix, ... }:
   let
     linuxSystem = "x86_64-linux";
     macSystem   = "aarch64-darwin";
@@ -25,6 +29,7 @@
         modules = [
           system-config.nixosModules.system
           ./hosts/msi/default.nix
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
