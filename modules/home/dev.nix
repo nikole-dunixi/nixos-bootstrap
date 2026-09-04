@@ -25,7 +25,12 @@
           baseURL = "http://localhost:11434/v1";
           apiKey = "{env:OLLAMA_API_KEY}";
         };
-        models."qwen2.5-coder:7b".tools = true;
+        models = {
+          "qwen2.5-coder:0.5b" = {
+          };
+          "qwen2.5-coder:7b" = {
+          };
+        };
       };
       model = "ollama/qwen2.5-coder:7b";
       share = "disabled";
