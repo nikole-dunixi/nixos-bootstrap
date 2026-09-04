@@ -8,7 +8,9 @@
     moonlight-qt
     telegram-desktop
     tree
+    vlc
     vscode
+    xclip
     yt-dlp
   ];
 
