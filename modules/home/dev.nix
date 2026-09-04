@@ -9,6 +9,7 @@
     jq
     nodejs
     opencode
+    ripgrep
   ];
   # Local-only opencode: force the local ollama provider and ignore every
   # hosted/built-in remote provider (e.g. the `opencode` hosted models). The
